@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop home</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    
+    
+  </head>
+  <body class=" bg-[#fcfdf2]">
+
+    <!-- Mobile menu -->
+    <el-dialog>
+      <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
+        <el-dialog-backdrop
+          class="fixed inset-0 bg-black/25 transition-opacity duration-300 ease-linear data-closed:opacity-0"></el-dialog-backdrop>
+        <div tabindex="0" class="fixed inset-0 flex focus:outline-none">
+          <el-dialog-panel
+            class="relative flex w-full max-w-xs transform flex-col overflow-y-auto  bg-[#fcfdf2] pb-12 shadow-xl transition duration-300 ease-in-out data-closed:-translate-x-full">
+            <div class="flex px-4 pt-5 pb-2">
+              <button type="button" command="close" commandfor="mobile-menu"
+                class="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400">
+                <span class="absolute -inset-0.5"></span>
+                <span class="sr-only">Close menu</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                  aria-hidden="true" class="size-6">
+                  <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Links -->
+
+
+            <div class="space-y-6 border-t border-gray-200 px-4 py-6">
+              <div class="flow-root">
+                <a href="index.html" class="-m-2 block p-2 font-medium text-gray-900">Home</a>
+              </div>
+              <div class="flow-root">
+                <a href="products.html" class="-m-2 block p-2 font-medium text-gray-900">Products</a>
+              </div>
+              
+              
+            </div>
+
+          </el-dialog-panel>
+        </div>
+      </dialog>
+    </el-dialog>
+    <!-- Header -->
+    <header id="page-header" class="relative  bg-[#fcfdf2]">
+      <p class="flex h-10 items-center justify-center  bg-[#4b5ae4] px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        Get free delivery on orders over $100</p>
+
+      <nav aria-label="Top" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="border-b border-gray-200">
+          <div class="flex h-16 items-center">
+            <button type="button" command="show-modal" commandfor="mobile-menu"
+              class="relative rounded-md  bg-[#fcfdf2] p-2 text-gray-400 lg:hidden">
+              <span class="absolute -inset-0.5"></span>
+              <span class="sr-only">Open menu</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                aria-hidden="true" class="size-6">
+                <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <!-- Logo -->
+            <div class="ml-4 flex lg:ml-0 mx-10">
+              <a href="#">
+                <span class="sr-only">Your Company</span>
+                <img src="logo.png" alt=""
+                  class="h-8 w-auto" />
+              </a>
+            </div>
+
+            <!-- Flyout menus -->
+            <nav class="hidden md:flex space-x-8">
+          <a
+            href="index.html"
+            class="text-gray-900 font-medium hover:text-primary transition-colors"
+            >Home</a
+          >
+          
+          <a
+            href="products.html"
+            class="text-gray-900 font-medium hover:text-primary transition-colors"
+            >Products</a
+          >
+          
+        </nav>
+
+            <div class="ml-auto flex items-center">
+
+
+              
+
+
+              <!-- Cart -->
+              <div class="ml-4 flow-root lg:ml-6">
+                <a href="#" class="group -m-2 flex items-center p-2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon"
+                    aria-hidden="true" class="size-6 shrink-0 text-gray-400 group-hover:text-gray-500">
+                    <path
+                      d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                  <span class="sr-only">items in cart, view bag</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section relative bg-[url('https://i.pinimg.com/1200x/5c/fd/27/5cfd27675241272b7e03db8635bb3a87.jpg')] bg-cover bg-center bg-no-repeat h-1500" >
+      <div class="container mx-auto px-4 py-24 md:py-32 w-full text-white mb-4">
+        <div class="max-w-lg">
+          <h1 class="text-4xl md:text-5xl font-bold ">
+            Summer Collection 2025
+          </h1>
+          <p class="text-lg  mb-8">
+            Discover our latest arrivals designed for comfort and style. Premium
+            quality that lasts.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="#"
+              class="py-3 px-6 bg-primary text-white font-medium rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap"
+              >Shop Now</a
+            >
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    
+
+    <!-- Special Offer Banner -->
+    <section class="py-16 bg-gray-900 text-white">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Summer Sale</h2>
+            <p class="text-xl text-gray-300 mb-6">
+              Up to 50% off on selected items. Limited time offer.
+            </p>
+            <div class="flex gap-4 mb-8">
+              <div class=" bg-[#fcfdf2]/10 rounded-lg p-4 text-center">
+                <span class="block text-3xl font-bold">00</span>
+                <span class="text-sm text-gray-300">Days</span>
+              </div>
+              <div class=" bg-[#fcfdf2]/10 rounded-lg p-4 text-center">
+                <span class="block text-3xl font-bold">12</span>
+                <span class="text-sm text-gray-300">Hours</span>
+              </div>
+              <div class=" bg-[#fcfdf2]/10 rounded-lg p-4 text-center">
+                <span class="block text-3xl font-bold">45</span>
+                <span class="text-sm text-gray-300">Minutes</span>
+              </div>
+              <div class=" bg-[#fcfdf2]/10 rounded-lg p-4 text-center">
+                <span class="block text-3xl font-bold">30</span>
+                <span class="text-sm text-gray-300">Seconds</span>
+              </div>
+            </div>
+            <a
+              href="products.html"
+              class="rounded inline-block py-3 px-8  bg-[#fcfdf2] text-gray-900 font-medium rounded-button hover:bg-gray-100 transition-colors whitespace-nowrap"
+              >Shop the Sale</a
+            >
+          </div>
+          <div class="md:w-1/2">
+            <img
+              src="https://i.pinimg.com/1200x/ff/0d/36/ff0d36610b900947f943ec0fa39ccae3.jpg"
+              alt="Summer Sale"
+              class="rounded-lg w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">New Arrivals</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Product grid -->
+          <div class="lg:col-span-4">
+            <!-- Your content -->
+
+            <div id="product" class="mb-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3"></div>
+
+
+            <!-- ddd -->
+
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="products.html"
+            class="inline-block py-3 px-8 rounded text-white  bg-[#4b5ae4] font-medium rounded-button hover:bg-blue-700 transition-colors whitespace-nowrap"
+            >View All New Arrivals</a
+          >
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="py-16 bg-gray-900 text-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          What Our Customers Say
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <div class=" bg-[#fcfdf2] p-6 rounded-lg shadow-sm">
+            <div class="flex text-amber-400 mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "The quality of the clothes is exceptional. I've ordered multiple
+              times and have never been disappointed. The customer service is
+              also top-notch!"
+            </p>
+            <div class="flex items-center">
+              <div
+                class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-4"
+              >
+                <i class="ri-user-3-line text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900">Emily Richardson</h4>
+                <p class="text-sm text-gray-500">Loyal Customer</p>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class=" bg-[#fcfdf2] p-6 rounded-lg shadow-sm">
+            <div class="flex text-amber-400 mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-half-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "Fast shipping and the products look exactly like the pictures.
+              The sizing guide was very helpful. Will definitely shop here
+              again!"
+            </p>
+            <div class="flex items-center">
+              <div
+                class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-4"
+              >
+                <i class="ri-user-3-line text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900">Michael Thompson</h4>
+                <p class="text-sm text-gray-500">Verified Buyer</p>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class=" bg-[#fcfdf2] p-6 rounded-lg shadow-sm">
+            <div class="flex text-amber-400 mb-4">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "I love the sustainable approach this brand takes. The packaging
+              is eco-friendly and the clothes are made from high-quality,
+              sustainable materials."
+            </p>
+            <div class="flex items-center">
+              <div
+                class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-4"
+              >
+                <i class="ri-user-3-line text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900">Sophia Martinez</h4>
+                <p class="text-sm text-gray-500">Repeat Customer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">
+          Follow Us on Instagram
+        </h2>
+        <p class="text-gray-600 text-center mb-12">@shopease_official</p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <a
+            href="#"
+            class="block aspect-square overflow-hidden rounded-lg group"
+          >
+            <img
+              src="https://i.pinimg.com/1200x/7f/5e/84/7f5e84cac3fa81b647e858f34057daeb.jpg"
+              alt="Instagram Post"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          </a>
+          <a
+            href="#"
+            class="block aspect-square overflow-hidden rounded-lg group"
+          >
+            <img
+              src="https://i.pinimg.com/1200x/38/b1/84/38b1844cd8d7e80ce014cc71600fc2b5.jpg"
+              alt="Instagram Post"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          </a>
+          <a
+            href="#"
+            class="block aspect-square overflow-hidden rounded-lg group"
+          >
+            <img
+              src="https://i.pinimg.com/1200x/d5/cb/4d/d5cb4de8b303984f0c878676a6029216.jpg"
+              alt="Instagram Post"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          </a>
+          <a
+            href="#"
+            class="block aspect-square overflow-hidden rounded-lg group"
+          >
+            <img
+              src="https://i.pinimg.com/1200x/98/5a/28/985a288434dd889b254acb0357049c60.jpg"
+              alt="Instagram Post"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          </a>
+          <a
+            href="#"
+            class="block aspect-square overflow-hidden rounded-lg group"
+          >
+            <img
+              src="https://i.pinimg.com/1200x/03/62/ff/0362ff769cf2cedf34f75bc812b77425.jpg"
+              alt="Instagram Post"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          </a>
+          <a
+            href="#"
+            class="block aspect-square overflow-hidden rounded-lg group"
+          >
+            <img
+              src="https://i.pinimg.com/1200x/65/aa/20/65aa200765037f9eeeaf1e35ba0405dc.jpg"
+              alt="Instagram Post"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gray-900 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+          <p class="text-gray-300 mb-8">
+            Stay updated with our latest collections, exclusive offers, and
+            style tips.
+          </p>
+          <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Your email address"
+              class="flex-1 px-4 py-3 rounded-button border-none text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/20"
+            />
+            <button
+              type="submit"
+              class="px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap"
+            >
+              Subscribe
+            </button>
+          </form>
+          <p class="text-sm text-gray-400 mt-4">
+            By subscribing, you agree to our Privacy Policy and consent to
+            receive updates from our company.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class=" bg-[#fcfdf2] border-t border-gray-100 pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <!-- Column 1: About -->
+          <div class="lg:col-span-2">
+            <a
+              href="#"
+              class="font-['Pacifico'] text-2xl text-primary inline-block mb-4"
+              >logo</a
+            >
+            <p class="text-gray-600 mb-6 max-w-md">
+              We offer premium quality clothing and accessories for men and
+              women. Our mission is to provide sustainable fashion that lasts.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors"
+              >
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors"
+              >
+                <i class="ri-twitter-x-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors"
+              >
+                <i class="ri-pinterest-line"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2: Shop -->
+          <div>
+            <h3 class="text-gray-900 font-semibold mb-4">Shop</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Women</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Men</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Accessories</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Footwear</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >New Arrivals</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Sale</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Help -->
+          <div>
+            <h3 class="text-gray-900 font-semibold mb-4">Help</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Customer Service</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >My Account</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Find a Store</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Shipping & Returns</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >FAQs</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 4: About -->
+          <div>
+            <h3 class="text-gray-900 font-semibold mb-4">About</h3>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Sustainability</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Press</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary transition-colors"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-gray-100">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-500 text-sm mb-4 md:mb-0">
+              &copy; 2025 ShopEase. All rights reserved.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+              <a href="#" class="text-gray-500 text-sm hover:text-gray-700"
+                >Privacy Policy</a
+              >
+              <a href="#" class="text-gray-500 text-sm hover:text-gray-700"
+                >Terms of Service</a
+              >
+              <a href="#" class="text-gray-500 text-sm hover:text-gray-700"
+                >Cookies Settings</a
+              >
+            </div>
+            <div class="flex items-center space-x-3 mt-4 md:mt-0">
+              <i class="ri-visa-fill text-2xl text-gray-600"></i>
+              <i class="ri-mastercard-fill text-2xl text-gray-600"></i>
+              <i class="ri-paypal-fill text-2xl text-gray-600"></i>
+              <i class="ri-apple-fill text-2xl text-gray-600"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+
+<script id="headerInteractions">
+      let productsData = [];
+
+      async function fetchData() {
+          const response = await fetch('https://fakestoreapi.com/products');
+          const data = await response.json();
+          productsData = data;
+          return data;
+      }
+
+      function showProduct(products = productsData) {
+          const container = document.getElementById('product');
+          
+          container.innerHTML = '';
+          if (!products || products.length === 0) {
+              container.innerHTML = '<p class="text-gray-500">No products found.</p>';
+              return;
+          }
+
+          products.slice(0,3).forEach(product => {
+              const card = `
+                  <div class="rounded-lg border border-gray-200  bg-[#fcfdf2] p-6 shadow-sm flex flex-col transition-transform duration-200 hover:scale-105">
+                      <div class="h-56 w-full">
+                          <a href="#">
+                              <img class="mx-auto h-full" src="${product.image}" alt="${product.title}" />
+                          </a>
+                      </div>
+                      <div class="pt-6">
+                          <div class="mb-4 flex items-center justify-between gap-4">
+                              <span class="me-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">${product.category}</span>
+                          </div>
+                          <a href="#" class="text-lg font-semibold leading-tight text-gray-900 hover:underline">${product.title}</a>
+                          <div class="mt-2 flex items-center gap-2">
+                              <p class="text-sm font-medium text-gray-900">${product.rating?.rate ?? ''}</p>
+                              <p class="text-sm font-medium text-gray-500">(${product.rating?.count ?? ''})</p>
+                          </div>
+                          <div class="mt-auto flex items-center justify-between gap-4 pt-4">
+                              <p class="text-2xl font-extrabold leading-tight text-gray-900">$${product.price}</p>
+                              <button class="items-center rounded-lg  bg-[#4b5ae4] px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700">Add to cart</button>
+                          </div>
+                      </div>
+                  </div>
+              `;
+
+              container.insertAdjacentHTML('beforeend', card);
+          });
+      }
+      window.onload = async function () {
+          await fetchData();
+          showProduct();
+      }
+
+</script>
+  </body>
+</html>
