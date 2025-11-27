@@ -129,6 +129,8 @@ function debounce(searchingFun, delay = 300) {
     };
 }
 
+
+
 window.onload = async function () {
     await fetchData();
     showProducts();
@@ -136,9 +138,8 @@ window.onload = async function () {
     sortDropdown(); 
 
     const searchInput = document.getElementById('search');
-    const search = debounce(function () {
-        applyFilters();
-     }, 300);
+    
+    const search = debounce(function () { applyFilters(); }, 300);
 
     if (searchInput) {
         searchInput.addEventListener('input', search);

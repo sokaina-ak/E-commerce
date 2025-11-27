@@ -153,24 +153,7 @@
             Up to 50% off on selected items. Limited time offer.
           </p>
 
-          <div class="flex gap-4 mb-8">
-            <div class="bg-[#fcfdf2]/10 rounded-lg p-4 text-center">
-              <span id="days" class="block text-3xl font-bold">00</span>
-              <span class="text-sm text-gray-300">Days</span>
-            </div>
-            <div class="bg-[#fcfdf2]/10 rounded-lg p-4 text-center">
-              <span id="hours" class="block text-3xl font-bold">00</span>
-              <span class="text-sm text-gray-300">Hours</span>
-            </div>
-            <div class="bg-[#fcfdf2]/10 rounded-lg p-4 text-center">
-              <span id="minutes" class="block text-3xl font-bold">00</span>
-              <span class="text-sm text-gray-300">Minutes</span>
-            </div>
-            <div class="bg-[#fcfdf2]/10 rounded-lg p-4 text-center">
-              <span id="seconds" class="block text-3xl font-bold">00</span>
-              <span class="text-sm text-gray-300">Seconds</span>
-            </div>
-          </div>
+          <br><br>
           <a href="products.html"
             class="rounded inline-block py-3 px-8 bg-[#fcfdf2] text-gray-900 font-medium rounded-button hover:bg-gray-100 transition-colors whitespace-nowrap">Shop
             the Sale</a>
@@ -462,43 +445,6 @@
 
 
 
-  <script>
-    const finish = new Date("December 31, 2025 23:59:59").getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-
-
-      const still = finish - now;
-
-      if (still < 0) {
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
-        clearInterval(interval);
-        return;
-      }
-
-      const days = Math.floor(still / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((still % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((still % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((still % (1000 * 60)) / 1000);
-
-      document.getElementById("days").textContent = String(days).padStart(2, "0");
-      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-    }
-
-    const interval = setInterval(updateCountdown, 1000);
-    updateCountdown(); 
-  </script>
-
-
-
-
-
 
 
 
@@ -555,7 +501,6 @@
         container.insertAdjacentHTML('beforeend', card);
       });
     }
-    
     window.onload = async function () {
       await fetchData();
       showProduct();
