@@ -1,4 +1,6 @@
 let productsData = [];
+let currentSort = 'default'; 
+
 
 async function fetchData() {
     const response = await fetch('https://fakestoreapi.com/products');
@@ -7,16 +9,20 @@ async function fetchData() {
     return data;
 }
 
+
+// show category and products
+
 function showProducts(products = productsData) {
     const container = document.getElementById('products');
-    
     container.innerHTML = '';
+    
     if (!products || products.length === 0) {
-        container.innerHTML = '<p class="text-gray-500">No products found.</p>';
+        container.innerHTML = '<p class="text-gray-500">No products found</p>';
         return;
     }
 
     products.forEach(product => {
+
         const card = `
             <div class="rounded-lg border border-gray-200  bg-[#fcfdf2] p-6 shadow-sm flex flex-col transition-transform duration-200 hover:scale-105">
                 <div class="h-56 w-full">
@@ -40,12 +46,10 @@ function showProducts(products = productsData) {
                 </div>
             </div>
         `;
-
         container.insertAdjacentHTML('beforeend', card);
     });
 }
 
-//category 
 async function categoryFilter() {
     const response = await fetch('https://fakestoreapi.com/products/categories');
     const data = await response.json();
@@ -53,8 +57,8 @@ async function categoryFilter() {
     categoryContainer.innerHTML = '';
     
     data.forEach((cat, index) => {
+        // (Your existing category HTML generation code remains here)
         const categoryItem = `
-            
             <div class="space-y-4">
                 <div class="flex gap-3">
                   <div class="flex h-5 shrink-0 items-center">
@@ -78,36 +82,46 @@ async function categoryFilter() {
 }
 
 
-//all filter
+
+
+// apply all filters
+
 function applyFilters() {
     const searchInput = document.getElementById('search').value.trim().toLowerCase();
+    const selected = Array.from(document.querySelectorAll('input[name="category[]"]:checked')).map(cb => cb.value);
 
-    const selected= Array.from(document.querySelectorAll('input[name="category[]"]:checked')).map(cb => cb.value);
+    let filtered = [...productsData]; // عشان مانغيرش ال original
 
-    let filtered = productsData;
 
-    // filter by category
+    // by search
+    if (searchInput){
+         filtered = filtered.filter(product => 
+            (product.title || '' ).toLowerCase().includes(searchInput) || 
+            (product.category || '').toLowerCase().includes(searchInput)
+        );
+    }
+
+    // by category
     if (selected.length > 0) {
         filtered = filtered.filter(product => selected.includes(product.category));
     }
 
-    // filter by search input
-
-    if (searchInput){
-         filtered = filtered.filter(product =>
-            (product.title || '' ).toLowerCase().includes(searchInput) || (product.category || '').toLowerCase().includes(searchInput)
-        );
-    }
-
     
+    // sorting 
+
+
+    if (currentSort === 'price-asc') {
+        filtered.sort((a, b) => a.price - b.price);
+    } else if (currentSort === 'price-desc') {
+        filtered.sort((a, b) => b.price - a.price);
+    } else if (currentSort === 'rating') {
+        filtered.sort((a, b) => b.rating.rate - a.rating.rate); 
+    }
 
     showProducts(filtered);
 }
 
 
-
-
-//this is for searching
 
 function debounce(searchingFun, delay = 300) {
     let timeout;
@@ -117,14 +131,13 @@ function debounce(searchingFun, delay = 300) {
     };
 }
 
-
 window.onload = async function () {
     await fetchData();
     showProducts();
     await categoryFilter();
+    sortDropdown(); 
 
     const searchInput = document.getElementById('search');
-
     const search = debounce(function () {
         applyFilters();
      }, 300);
@@ -132,9 +145,8 @@ window.onload = async function () {
     if (searchInput) {
         searchInput.addEventListener('input', search);
     }
-
-  
 };
+
 
 
 //show product pop
@@ -178,38 +190,68 @@ function showProducts(products = productsData) {
 }
 
 function openModal(product) {
-    const modal = document.getElementById('productModal');
+    const modal = document.getElementById('product');
     const imgElem = document.getElementById('prodImage');
     const modalContent = document.getElementById('modalContent');
 
     imgElem.src = product.image;
 
     modalContent.innerHTML = `
-    <h2 class="text-3xl font-bold mb-2">${product.title}</h2>
-        <p class="text-gray-600 mb-4">${product.category}</p>
-        <div class="mt-2 flex items-center gap-2">
+        <h2 class="text-xl font-bold mb-1 md:text-3xl">${product.title}</h2>
+        <p class="text-gray-600 mb-3">${product.category}</p>
+        <div class="mt-1 flex items-center gap-2">
             <p class="text-sm font-medium text-gray-900">${product.rating?.rate ?? ''}</p>
             <p class="text-sm font-medium text-gray-500">(${product.rating?.count ?? ''})</p>
         </div>
-        <div class="mb-4">
-            <span class="text-2xl font-bold mr-2">$${product.price}</span>
+        <div class="mb-3 mt-2">
+            <span class="text-xl font-bold mr-2 md:text-2xl">$${product.price}</span>
         </div>
-        <p class="text-gray-700 mb-6">${product.description ?? ''}</p>
-
-        
+        <p class="text-gray-700 mb-4">${product.description ?? ''}</p>
     `;
 
     modal.classList.remove('hidden');
 }
 
 // Close modal
-document.getElementById('closeModal').addEventListener('click', () => {
-    document.getElementById('productModal').classList.add('hidden');
+document.getElementById('close').addEventListener('click', () => {
+    document.getElementById('product').classList.add('hidden');
 });
 
-// Close modal if clicking outside content
-document.getElementById('productModal').addEventListener('click', (e) => {
-    if (e.target.id === 'productModal') {
-        document.getElementById('productModal').classList.add('hidden');
+// Close details if clicking outside content
+document.getElementById('product').addEventListener('click', (e) => {
+    if (e.target.id === 'product') {
+        document.getElementById('product').classList.add('hidden');
     }
 });
+
+
+// to handle dropdown click
+function sortDropdown() {
+    const sortButton = document.getElementById('sortButton');
+    const sortMenu = document.getElementById('sortMenu');
+    const sortOptions = document.querySelectorAll('.sort-option');
+
+    sortButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sortMenu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!sortButton.contains(e.target) && !sortMenu.contains(e.target)) {
+            sortMenu.classList.add('hidden');
+        }
+    });
+
+    // selection
+    sortOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            currentSort = e.target.getAttribute('data-sort');
+            
+            applyFilters();
+            
+            sortMenu.classList.add('hidden');
+        });
+    });
+}
