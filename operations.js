@@ -12,41 +12,38 @@ async function fetchData() {
 
 // show category and products
 
+//show product pop
 function showProducts(products = productsData) {
     const container = document.getElementById('products');
     container.innerHTML = '';
-    
-    if (!products || products.length === 0) {
-        container.innerHTML = '<p class="text-gray-500">No products found</p>';
-        return;
-    }
+
 
     products.forEach(product => {
-
-        const card = `
-            <div class="rounded-lg border border-gray-200  bg-[#fcfdf2] p-6 shadow-sm flex flex-col transition-transform duration-200 hover:scale-105">
-                <div class="h-56 w-full">
-                    <a href="#">
-                        <img class="mx-auto h-full" src="${product.image}" alt="${product.title}" />
-                    </a>
+        const card = document.createElement('div');
+        card.className = "rounded-lg border border-gray-200  bg-[#fcfdf2] p-6 shadow-sm flex flex-col transition-transform duration-200 hover:scale-105 cursor-pointer";
+        card.innerHTML = `
+            <div class="h-56 w-full">
+                <img class="mx-auto h-full" src="${product.image}" alt="${product.title}" />
+            </div>
+            <div class="pt-6">
+                <div class="mb-4 flex items-center justify-between gap-4">
+                    <span class="me-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">${product.category}</span>
                 </div>
-                <div class="pt-6">
-                    <div class="mb-4 flex items-center justify-between gap-4">
-                        <span class="me-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">${product.category}</span>
-                    </div>
-                    <a href="#" class="text-lg font-semibold leading-tight text-gray-900 hover:underline">${product.title}</a>
-                    <div class="mt-2 flex items-center gap-2">
-                        <p class="text-sm font-medium text-gray-900">${product.rating?.rate ?? ''}</p>
-                        <p class="text-sm font-medium text-gray-500">(${product.rating?.count ?? ''})</p>
-                    </div>
-                    <div class="mt-auto flex items-center justify-between gap-4 pt-4">
-                        <p class="text-2xl font-extrabold leading-tight text-gray-900">$${product.price}</p>
-                        <button class="items-center rounded-lg  bg-[#4b5ae4] px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700">Add to cart</button>
-                    </div>
+                <a href="#" class="text-lg font-semibold leading-tight text-gray-900 hover:underline">${product.title}</a>
+                <div class="mt-2 flex items-center gap-2">
+                    <p class="text-sm font-medium text-gray-900">${product.rating?.rate ?? ''}</p>
+                    <p class="text-sm font-medium text-gray-500">(${product.rating?.count ?? ''})</p>
+                </div>
+                <div class="mt-auto flex items-center justify-between gap-4 pt-4">
+                    <p class="text-2xl font-extrabold leading-tight text-gray-900">$${product.price}</p>
+                    <button class="items-center rounded-lg  bg-[#4b5ae4] px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700">Add to cart</button>
                 </div>
             </div>
         `;
-        container.insertAdjacentHTML('beforeend', card);
+
+        card.addEventListener('click', () => openCard(product));
+
+        container.appendChild(card);
     });
 }
 
@@ -76,6 +73,7 @@ async function categoryFilter() {
         `;
         categoryContainer.insertAdjacentHTML('beforeend', categoryItem);
     });
+    
     
     const categoryCheckboxes = document.querySelectorAll('input[name="category[]"]');
     categoryCheckboxes.forEach( cb => cb.addEventListener('change', applyFilters) );
@@ -149,47 +147,9 @@ window.onload = async function () {
 
 
 
-//show product pop
-function showProducts(products = productsData) {
-    const container = document.getElementById('products');
-    container.innerHTML = '';
+// product details
 
-    if (!products || products.length === 0) {
-        container.innerHTML = '<p class="text-gray-500">No products found.</p>';
-        return;
-    }
-
-    products.forEach(product => {
-        const card = document.createElement('div');
-        card.className = "rounded-lg border border-gray-200  bg-[#fcfdf2] p-6 shadow-sm flex flex-col transition-transform duration-200 hover:scale-105 cursor-pointer";
-        card.innerHTML = `
-            <div class="h-56 w-full">
-                <img class="mx-auto h-full" src="${product.image}" alt="${product.title}" />
-            </div>
-            <div class="pt-6">
-                <div class="mb-4 flex items-center justify-between gap-4">
-                    <span class="me-2 rounded bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800">${product.category}</span>
-                </div>
-                <a href="#" class="text-lg font-semibold leading-tight text-gray-900 hover:underline">${product.title}</a>
-                <div class="mt-2 flex items-center gap-2">
-                    <p class="text-sm font-medium text-gray-900">${product.rating?.rate ?? ''}</p>
-                    <p class="text-sm font-medium text-gray-500">(${product.rating?.count ?? ''})</p>
-                </div>
-                <div class="mt-auto flex items-center justify-between gap-4 pt-4">
-                    <p class="text-2xl font-extrabold leading-tight text-gray-900">$${product.price}</p>
-                    <button class="items-center rounded-lg  bg-[#4b5ae4] px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700">Add to cart</button>
-                </div>
-            </div>
-        `;
-
-        // Attach click event directly here
-        card.addEventListener('click', () => openModal(product));
-
-        container.appendChild(card);
-    });
-}
-
-function openModal(product) {
+function openCard(product) {
     const modal = document.getElementById('product');
     const imgElem = document.getElementById('prodImage');
     const modalContent = document.getElementById('modalContent');
@@ -212,12 +172,12 @@ function openModal(product) {
     modal.classList.remove('hidden');
 }
 
-// Close modal
+// close details
 document.getElementById('close').addEventListener('click', () => {
     document.getElementById('product').classList.add('hidden');
 });
 
-// Close details if clicking outside content
+// close details
 document.getElementById('product').addEventListener('click', (e) => {
     if (e.target.id === 'product') {
         document.getElementById('product').classList.add('hidden');
@@ -228,11 +188,13 @@ document.getElementById('product').addEventListener('click', (e) => {
 // to handle dropdown click
 function sortDropdown() {
     const sortButton = document.getElementById('sortButton');
+
     const sortMenu = document.getElementById('sortMenu');
+
     const sortOptions = document.querySelectorAll('.sort-option');
 
     sortButton.addEventListener('click', (e) => {
-        e.stopPropagation();
+        e.stopPropagation(); //it doesn’t immediately close the menu
         sortMenu.classList.toggle('hidden');
     });
 

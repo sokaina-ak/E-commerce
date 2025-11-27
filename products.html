@@ -44,8 +44,8 @@
               <div class="flow-root">
                 <a href="products.html" class="-m-2 block p-2 font-medium text-gray-900">Products</a>
               </div>
-              
-              
+
+
             </div>
 
           </el-dialog-panel>
@@ -54,7 +54,8 @@
     </el-dialog>
 
     <header id="page-header" class="relative  bg-[#fcfdf2]  bg-[#fcfdf2]">
-      <p class="flex h-10 items-center justify-center  bg-[#4b5ae4] px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+      <p
+        class="flex h-10 items-center justify-center  bg-[#4b5ae4] px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
         Get free delivery on orders over $100</p>
 
       <nav aria-label="Top" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8  bg-[#fcfdf2]">
@@ -74,26 +75,18 @@
             <div class="ml-4 flex lg:ml-0 mx-10">
               <a href="#">
                 <span class="sr-only">Your Company</span>
-                <img src="logo.png" alt=""
-                  class="h-8 w-auto" />
+                <img src="logo.png" alt="" class="h-8 w-auto" />
               </a>
             </div>
 
             <!-- Flyout menus -->
             <nav class="hidden md:flex space-x-8">
-          <a
-            href="index.html"
-            class="text-gray-900 font-medium hover:text-primary transition-colors"
-            >Home</a
-          >
-          
-          <a
-            href="products.html"
-            class="text-gray-900 font-medium hover:text-primary transition-colors"
-            >Products</a
-          >
-          
-        </nav>
+              <a href="index.html" class="text-gray-900 font-medium hover:text-primary transition-colors">Home</a>
+
+              <a href="products.html"
+                class="text-gray-900 font-medium hover:text-primary transition-colors">Products</a>
+
+            </nav>
 
             <div class="ml-auto flex items-center">
 
@@ -123,9 +116,9 @@
                       stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                   <span id="count" class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
-                 
+
                 </a>
-                
+
 
 
               </div>
@@ -238,7 +231,8 @@
                     <div class="flex gap-3">
                       <div class="flex h-5 shrink-0 items-center">
                         <div class="group grid size-4 grid-cols-1">
-                          <input id="filter-mobile-category-3" type="checkbox" name="category[]" value="women's clothing"
+                          <input id="filter-mobile-category-3" type="checkbox" name="category[]"
+                            value="women's clothing"
                             class="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300  bg-[#fcfdf2] checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto" />
                           <svg viewBox="0 0 14 14" fill="none"
                             class="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25">
@@ -249,9 +243,10 @@
                           </svg>
                         </div>
                       </div>
-                      <label for="filter-mobile-category-3" class="min-w-0 flex-1 text-gray-500">women's clothing</label>
+                      <label for="filter-mobile-category-3" class="min-w-0 flex-1 text-gray-500">women's
+                        clothing</label>
                     </div>
-                    
+
                   </div>
                 </el-disclosure>
               </div>
@@ -268,23 +263,31 @@
 
         <div class="flex items-center">
           <div class="relative inline-block text-left">
-              <button id="sortButton" class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                Sort
-                <svg viewBox="0 0 20 20" fill="currentColor" class="-mr-1 ml-1 size-5 shrink-0 text-gray-400 group-hover:text-gray-500">
-                  <path d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
-                </svg>
-              </button>
+            <button id="sortButton"
+              class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+              Sort
+              <svg viewBox="0 0 20 20" fill="currentColor"
+                class="-mr-1 ml-1 size-5 shrink-0 text-gray-400 group-hover:text-gray-500">
+                <path
+                  d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                  clip-rule="evenodd" fill-rule="evenodd" />
+              </svg>
+            </button>
 
-              <div id="sortMenu" class="hidden absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-[#fcfdf2] shadow-2xl ring-1 ring-black/5 focus:outline-hidden">
-                <div class="py-1">
-                  <a href="#" data-sort="rating" class="sort-option block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Best Rating</a>
-                  <a href="#" data-sort="price-asc" class="sort-option block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Price: Low to High</a>
-                  <a href="#" data-sort="price-desc" class="sort-option block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Price: High to Low</a>
-                </div>
+            <div id="sortMenu"
+              class="hidden absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-[#fcfdf2] shadow-2xl ring-1 ring-black/5 focus:outline-hidden">
+              <div class="py-1">
+                <a href="#" data-sort="rating"
+                  class="sort-option block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Best Rating</a>
+                <a href="#" data-sort="price-asc"
+                  class="sort-option block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Price: Low to High</a>
+                <a href="#" data-sort="price-desc"
+                  class="sort-option block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100">Price: High to Low</a>
               </div>
+            </div>
           </div>
 
-          
+
           </button>
           <button type="button" command="show-modal" commandfor="mobile-filters"
             class="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden">
@@ -351,41 +354,40 @@
 
         </div>
       </section>
-       
 
 
-       
-      <div id="product" class="fixed inset-0 hidden z-50 bg-black/50 flex items-center justify-center">
-    <div class="bg-[#fcfdf2] rounded-lg max-w-3xl w-[90%] md:w-full p-6 relative flex flex-col md:flex-row gap-6 ">
-      <button id="close"
-        class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-      
-      <div class="w-full md:w-1/2 flex justify-center items-center">
-        <img id="prodImage" src="" alt="" class="w-full h-auto rounded-lg shadow-md" />
-      </div>
 
-      <div class="w-full md:w-1/2 overflow-y-auto ">
-        <div id="modalContent"></div>
 
-        <div class="mt-4 flex flex-col sm:flex-row sm:items-end sm:gap-4">
-            <div class="mb-4 sm:mb-0">
+      <div id="product" class="fixed inset-0 hidden z-50 bg-black/50 flex items-center justify-center overflow-y-auto">
+        <div class="bg-[#fcfdf2] rounded-lg max-w-3xl w-[90%] md:w-full p-6 relative flex flex-col md:flex-row gap-6 ">
+          <button id="close" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+
+          <div class="w-full md:w-1/2 flex justify-center items-center">
+            <img id="prodImage" src="" alt="" class="w-full h-auto rounded-lg shadow-md" />
+          </div>
+
+          <div class="w-full md:w-1/2 overflow-y-auto ">
+            <div id="modalContent"></div>
+
+            <div class="mt-4 flex flex-col sm:flex-row sm:items-end sm:gap-4">
+              <div class="mb-4 sm:mb-0">
                 <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" min="1" value="1"
                   class="w-16 p-2 text-center rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-            </div>
-            <button
+              </div>
+              <button
                 class="bg-indigo-600 flex gap-2 items-center text-white px-6 py-3 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 w-full sm:w-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                  stroke="currentColor" class="size-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                 </svg>
                 Add to Cart
-            </button>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-</div>
 
 
 
